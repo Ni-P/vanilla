@@ -1,20 +1,19 @@
+// the state variables of the app
 var firstNumber = null;
 var secondNumber = null;
 var result = null;
 var operation = null;
 
+/**
+ * this function get called when the window has finished loading the page
+ */
 window.onload = function () {
   update();
 };
 
-function handleClick(event) {
-  //   console.log(event);
-  console.log(event.target.dataset.number);
-  console.log("firstNumber", firstNumber);
-  console.log("secondNumber", secondNumber);
-  console.log("operation", operation);
-}
-
+/**
+ * print state to console for debugging
+ */
 function printState() {
   console.log("firstNumber", firstNumber);
   console.log("secondNumber", secondNumber);
@@ -22,6 +21,9 @@ function printState() {
   console.log("result", result);
 }
 
+/**
+ * Update the ui
+ */
 function update() {
   const el = document.querySelector("#calculator-screen");
   if (firstNumber === null) {
@@ -42,6 +44,11 @@ function update() {
   }
 }
 
+/**
+ * Click event handler.
+ * Adds the next digit to the calculator.
+ * @param {MouseEvent} event
+ */
 function insertNumber(event) {
   if (result) {
     firstNumber = result;
@@ -60,6 +67,11 @@ function insertNumber(event) {
   update();
 }
 
+/**
+ * Click event handler.
+ * Sets the mathematical operation.
+ * @param {MouseEvent} event
+ */
 function setOperation(event) {
   operation = event.target.dataset.operation;
   if (result !== null) {
@@ -71,6 +83,9 @@ function setOperation(event) {
   update();
 }
 
+/**
+ * Performs the calculation.
+ */
 function calculate() {
   switch (operation) {
     case "+":
@@ -98,6 +113,9 @@ function calculate() {
   printState();
 }
 
+/**
+ * Resets the state of the calculator.
+ */
 function reset() {
   firstNumber = null;
   secondNumber = null;
