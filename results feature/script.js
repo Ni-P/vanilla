@@ -10,10 +10,6 @@ var id = 0;
  * this function get called when the window has finished loading the page
  */
 window.onload = function () {
-  id = results.push(...loadFromLocalStorage());
-  results.forEach((res) => {
-    addResultToTable(res);
-  });
   update();
 };
 
@@ -142,75 +138,25 @@ function reset() {
 }
 
 function addResultToTable(resultObj) {
-  const { left, right, operation, result, id } = resultObj;
 
-  const table = document.querySelector("#results-table tbody");
-
-  const tr = document.createElement("tr");
-
-  const tdId = document.createElement("td");
-  tdId.innerHTML = id;
-
-  const tdLeft = document.createElement("td");
-  tdLeft.innerHTML = left;
-
-  const tdRight = document.createElement("td");
-  tdRight.innerHTML = right;
-
-  const tdOperation = document.createElement("td");
-  tdOperation.innerHTML = operation;
-
-  const tdResult = document.createElement("td");
-  tdResult.innerHTML = result;
-
-  tr.appendChild(tdId);
-  tr.appendChild(tdLeft);
-  tr.appendChild(tdOperation);
-  tr.appendChild(tdRight);
-  tr.appendChild(tdResult);
-
-  table.appendChild(tr);
-
-  // console.log(tr);
 }
 
 function clearTableContents() {
-  const table = document.querySelector("#results-table tbody");
-  table.innerHTML = "";
+
 }
 
 function saveToLocalStorage(resultObj) {
-  try {
-    window.localStorage.setItem(`${id}`, JSON.stringify(resultObj));
-    window.localStorage.setItem("id", id);
-    return true;
-  } catch (e) {
-    console.error(e);
-    return false;
-  }
+
 }
 
 function loadFromLocalStorage() {
-  const count = parseInt(window.localStorage.getItem("id"));
   const loadedResults = [];
-  for (let i = 0; i < count; i++) {
-    const resultObj = window.localStorage.getItem(`${i + 1}`);
-    console.log("loaded", resultObj);
-    if (resultObj) {
-      loadedResults.push(JSON.parse(resultObj));
-      id++;
-    }
-  }
-  console.log("total", loadedResults.length);
+ 
   return loadedResults;
 }
 
 function clearLocalStorage() {
-  const count = parseInt(window.localStorage.getItem("id"));
-  for (let i = 0; i < count; i++) {
-    window.localStorage.removeItem(`${i + 1}`);
-  }
-  window.localStorage.removeItem("id");
+
   clearTableContents();
 }
 
@@ -219,7 +165,3 @@ function deleteLastResult() {
   // remove from table
   // remove form localstorage
 }
-
-async function loadFromServer() {}
-async function saveToServer(resultObj) {}
-async function deleteFromServer(id) {}

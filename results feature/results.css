@@ -1,0 +1,13 @@
+.results-panel {
+  margin-top: 1rem;
+  background-color: #ddd;
+  padding: 1rem;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  table-layout: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
