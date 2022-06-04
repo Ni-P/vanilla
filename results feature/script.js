@@ -138,30 +138,33 @@ function reset() {
 }
 
 function addResultToTable(resultObj) {
+  const { left, right, operation, result, id } = resultObj;
 
-}
+  const table = document.querySelector("#results-table tbody");
 
-function clearTableContents() {
+  const tr = document.createElement("tr");
 
-}
+  const tdId = document.createElement("td");
+  tdId.innerHTML = id;
 
-function saveToLocalStorage(resultObj) {
+  const tdLeft = document.createElement("td");
+  tdLeft.innerHTML = left;
 
-}
+  const tdRight = document.createElement("td");
+  tdRight.innerHTML = right;
 
-function loadFromLocalStorage() {
-  const loadedResults = [];
- 
-  return loadedResults;
-}
+  const tdOperation = document.createElement("td");
+  tdOperation.innerHTML = operation;
 
-function clearLocalStorage() {
+  const tdResult = document.createElement("td");
+  tdResult.innerHTML = result;
 
-  clearTableContents();
-}
+  tr.appendChild(tdId);
+  tr.appendChild(tdLeft);
+  tr.appendChild(tdOperation);
+  tr.appendChild(tdRight);
+  tr.appendChild(tdResult);
 
-function deleteLastResult() {
-  // remove from app state
-  // remove from table
-  // remove form localstorage
+  table.appendChild(tr);
+
 }

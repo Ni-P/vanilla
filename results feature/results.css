@@ -11,3 +11,15 @@ table {
   border-spacing: 0;
   border-collapse: collapse;
 }
+
+table tr {
+  border-bottom: 1px solid #000;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+table td {
+  padding: 0.5ch;
+}
