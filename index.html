@@ -1,7 +1,9 @@
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8" />
-    <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
@@ -31,7 +33,32 @@
                 <button class="btn" data-operation="/" onclick="setOperation(event)">/</button>
             </div>
         </div>
+        <h1>Results</h1>
+        <div class="results-panel">
+            <table id="results-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Left Operand</th>
+                        <th>Operation</th>
+                        <th>Right Operand</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <script src="./script.js"></script>
 </body>
 
 </html>

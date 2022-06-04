@@ -3,6 +3,8 @@ var firstNumber = null;
 var secondNumber = null;
 var result = null;
 var operation = null;
+const results = [];
+var id = 0;
 
 /**
  * this function get called when the window has finished loading the page
@@ -109,6 +111,15 @@ function calculate() {
   }
   if (result !== null) {
     update();
+    const resultObject = {
+      id: ++id,
+      result,
+      left: firstNumber,
+      right: secondNumber,
+      operation,
+    };
+    addResultToTable(resultObject);
+    saveToLocalStorage(resultObject);
   }
   printState();
 }
@@ -124,3 +135,48 @@ function reset() {
   update();
   printState();
 }
+
+function addResultToTable(resultObj) {
+  const { left, right, operation, result, id } = resultObj;
+
+  const table = document.querySelector("#results-table tbody");
+
+  const tr = document.createElement("tr");
+
+  const tdId = document.createElement("td");
+  tdId.innerHTML = id;
+
+  const tdLeft = document.createElement("td");
+  tdLeft.innerHTML = left;
+
+  const tdRight = document.createElement("td");
+  tdRight.innerHTML = right;
+
+  const tdOperation = document.createElement("td");
+  tdOperation.innerHTML = operation;
+
+  const tdResult = document.createElement("td");
+  tdResult.innerHTML = result;
+
+  tr.appendChild(tdId);
+  tr.appendChild(tdLeft);
+  tr.appendChild(tdOperation);
+  tr.appendChild(tdRight);
+  tr.appendChild(tdResult);
+
+  table.appendChild(tr);
+
+  // console.log(tr);
+}
+
+function saveToLocalStorage(resultObj) {
+  try {
+    window.localStorage.setItem(`${id}`, JSON.stringify(resultObj));
+    return true;
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+}
+
+async function saveToServer(resultObj) {}

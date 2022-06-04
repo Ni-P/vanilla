@@ -1,0 +1,29 @@
+.results-panel {
+  margin-top: 1rem;
+  background-color: #ddd;
+  padding: 1rem;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  table-layout: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+/* table thead tr {
+    border-bottom: 1px solid #000;
+  } */
+
+table tr {
+  border-bottom: 1px solid #000;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+table td {
+  padding: 0.5ch;
+}
