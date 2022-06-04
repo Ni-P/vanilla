@@ -10,6 +10,10 @@ var id = 0;
  * this function get called when the window has finished loading the page
  */
 window.onload = function () {
+  id = results.push(...loadFromLocalStorage());
+  results.forEach((res) => {
+    addResultToTable(res);
+  });
   update();
 };
 
@@ -53,11 +57,12 @@ function update() {
  */
 function insertNumber(event) {
   if (result) {
-    firstNumber = result;
+    let firstStr = `${event.target.dataset.number}`;
+    firstNumber = parseInt(firstStr);
     secondNumber = null;
     operation = null;
-  }
-  if (operation) {
+    result = null;
+  } else if (operation) {
     let secondStr = `${secondNumber || ""}${event.target.dataset.number}`;
     secondNumber = parseInt(secondStr);
   } else {
@@ -169,9 +174,15 @@ function addResultToTable(resultObj) {
   // console.log(tr);
 }
 
+function clearTableContents() {
+  const table = document.querySelector("#results-table tbody");
+  table.innerHTML = "";
+}
+
 function saveToLocalStorage(resultObj) {
   try {
     window.localStorage.setItem(`${id}`, JSON.stringify(resultObj));
+    window.localStorage.setItem("id", id);
     return true;
   } catch (e) {
     console.error(e);
@@ -179,4 +190,36 @@ function saveToLocalStorage(resultObj) {
   }
 }
 
+function loadFromLocalStorage() {
+  const count = parseInt(window.localStorage.getItem("id"));
+  const loadedResults = [];
+  for (let i = 0; i < count; i++) {
+    const resultObj = window.localStorage.getItem(`${i + 1}`);
+    console.log("loaded", resultObj);
+    if (resultObj) {
+      loadedResults.push(JSON.parse(resultObj));
+      id++;
+    }
+  }
+  console.log("total", loadedResults.length);
+  return loadedResults;
+}
+
+function clearLocalStorage() {
+  const count = parseInt(window.localStorage.getItem("id"));
+  for (let i = 0; i < count; i++) {
+    window.localStorage.removeItem(`${i + 1}`);
+  }
+  window.localStorage.removeItem("id");
+  clearTableContents();
+}
+
+function deleteLastResult() {
+  // remove from app state
+  // remove from table
+  // remove form localstorage
+}
+
+async function loadFromServer() {}
 async function saveToServer(resultObj) {}
+async function deleteFromServer(id) {}
