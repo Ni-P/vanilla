@@ -66,12 +66,12 @@ button.btn {
 
 @keyframes blink {
   0% {
-    color: #000;
+    opacity: 1;
   }
   75% {
-    color: #dddddd1a;
+    opacity: 0;
   }
   100% {
-      color: #000;
+    opacity: 1;
   }
 }
