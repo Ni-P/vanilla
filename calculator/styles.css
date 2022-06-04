@@ -41,5 +41,32 @@ h1 {
 }
 
 .button-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin: 1rem auto 0;
+}
 
+button.btn {
+  height: 50px;
+  /* width: 50px; */
+}
+
+.blink {
+  animation: blink;
+  animation-duration: 2200ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
