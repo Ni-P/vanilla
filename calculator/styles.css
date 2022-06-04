@@ -13,11 +13,6 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-@font-face {
-  font-family: roboto;
-  src: url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,100;1,400;1,500&display=swap");
-}
-
 h1 {
   text-align: center;
   margin: 1rem auto;
@@ -45,33 +40,6 @@ h1 {
 
 }
 
-.blink {
-    animation: blink;
-    animation-duration: 2200ms;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
 .button-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem;
-  margin: 1rem auto 0;
-}
 
-button.btn {
-  height: 50px;
-  /* width: 50px; */
-}
-
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  75% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }

@@ -25,21 +25,19 @@ function printState() {
  * Update the ui
  */
 function update() {
+  // get a reference to the element we need to access
   const el = document.querySelector("#calculator-screen");
-  if (firstNumber === null) {
-    el.classList.add("blink");
-  } else {
-    if (el.classList.contains("blink")) {
-      el.classList.remove("blink");
-    }
-  }
+
   if (result !== null) {
+    // we have a result to print
     el.innerHTML = `${result}`;
   } else if (operation) {
+    // we are printing the second number as we type it
     el.innerHTML = `${firstNumber} ${operation} ${
       secondNumber === null ? "" : secondNumber
     }`;
   } else {
+    // we are printing the first number as we type it
     el.innerHTML = `${firstNumber || 0}`;
   }
 }
@@ -50,18 +48,7 @@ function update() {
  * @param {MouseEvent} event
  */
 function insertNumber(event) {
-  if (result) {
-    firstNumber = result;
-    secondNumber = null;
-    operation = null;
-  }
-  if (operation) {
-    let secondStr = `${secondNumber || ""}${event.target.dataset.number}`;
-    secondNumber = parseInt(secondStr);
-  } else {
-    let firstStr = `${firstNumber ?? ""}${event.target.dataset.number}`;
-    firstNumber = parseInt(firstStr);
-  }
+  // insert a digit to the current number we are inputting
 
   printState();
   update();
@@ -73,12 +60,9 @@ function insertNumber(event) {
  * @param {MouseEvent} event
  */
 function setOperation(event) {
-  operation = event.target.dataset.operation;
-  if (result !== null) {
-    firstNumber = result;
-    secondNumber = null;
-    result = null;
-  }
+  // set the operation we are inputting
+
+
   printState();
   update();
 }
