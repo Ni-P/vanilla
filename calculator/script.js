@@ -71,29 +71,8 @@ function setOperation(event) {
  * Performs the calculation.
  */
 function calculate() {
-  switch (operation) {
-    case "+":
-      result = firstNumber + secondNumber;
-      break;
-    case "-":
-      result = firstNumber - secondNumber;
-      break;
-    case "*":
-      result = firstNumber * secondNumber;
-      break;
-    case "/":
-      if (secondNumber !== 0) {
-        result = firstNumber / secondNumber;
-      } else {
-        alert("error: cannot divide by zero");
-      }
-      break;
-    default:
-      alert("error: invalid operation");
-  }
-  if (result !== null) {
-    update();
-  }
+  // do a calculation depending on the operation selected  
+
   printState();
 }
 
