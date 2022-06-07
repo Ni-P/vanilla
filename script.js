@@ -179,47 +179,25 @@ function clearTableContents() {
   table.innerHTML = "";
 }
 
+// TODO Implement data persistence by using localStorage
+
 function saveToLocalStorage(resultObj) {
-  try {
-    window.localStorage.setItem(`${id}`, JSON.stringify(resultObj));
-    window.localStorage.setItem("id", id);
-    return true;
-  } catch (e) {
-    console.error(e);
-    return false;
-  }
+
 }
 
 function loadFromLocalStorage() {
-  const count = parseInt(window.localStorage.getItem("id"));
-  const loadedResults = [];
-  for (let i = 0; i < count; i++) {
-    const resultObj = window.localStorage.getItem(`${i + 1}`);
-    console.log("loaded", resultObj);
-    if (resultObj) {
-      loadedResults.push(JSON.parse(resultObj));
-      id++;
-    }
-  }
-  console.log("total", loadedResults.length);
-  return loadedResults;
+  
+  return [];
 }
 
 function clearLocalStorage() {
-  const count = parseInt(window.localStorage.getItem("id"));
-  for (let i = 0; i < count; i++) {
-    window.localStorage.removeItem(`${i + 1}`);
-  }
-  window.localStorage.removeItem("id");
-  clearTableContents();
+
 }
+
+// TODO Add button to remove latest entry from the store
 
 function deleteLastResult() {
   // remove from app state
   // remove from table
   // remove form localstorage
 }
-
-async function loadFromServer() {}
-async function saveToServer(resultObj) {}
-async function deleteFromServer(id) {}
