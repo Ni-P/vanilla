@@ -120,7 +120,7 @@ function calculate() {
       operation,
     };
     addResultToTable(resultObject);
-    saveToLocalStorage(resultObject);
+
   }
   printState();
 }
@@ -137,34 +137,12 @@ function reset() {
   printState();
 }
 
+// TODO Insert results to table
+// TODO Add button to clear the table
+
 function addResultToTable(resultObj) {
-  const { left, right, operation, result, id } = resultObj;
+  
+}
 
-  const table = document.querySelector("#results-table tbody");
-
-  const tr = document.createElement("tr");
-
-  const tdId = document.createElement("td");
-  tdId.innerHTML = id;
-
-  const tdLeft = document.createElement("td");
-  tdLeft.innerHTML = left;
-
-  const tdRight = document.createElement("td");
-  tdRight.innerHTML = right;
-
-  const tdOperation = document.createElement("td");
-  tdOperation.innerHTML = operation;
-
-  const tdResult = document.createElement("td");
-  tdResult.innerHTML = result;
-
-  tr.appendChild(tdId);
-  tr.appendChild(tdLeft);
-  tr.appendChild(tdOperation);
-  tr.appendChild(tdRight);
-  tr.appendChild(tdResult);
-
-  table.appendChild(tr);
-
+function clearTableContents() {
 }
