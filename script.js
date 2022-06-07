@@ -220,6 +220,8 @@ function deleteLastResult() {
   // remove form localstorage
 }
 
+// TODO Implement backend connection to store results
+
 async function loadFromServer() {}
 async function saveToServer(resultObj) {}
 async function deleteFromServer(id) {}
