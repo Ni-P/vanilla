@@ -1,19 +1,28 @@
 // the state variables of the app
 var firstNumber = null;
+var operation = null;
 var secondNumber = null;
 var result = null;
-var operation = null;
+
+// for loading initial results from localstorage
 const results = [];
+
+// the id of each calculation. gets incremented by 1
 var id = 0;
+
+// set a flag to activate the results table
+const useResultsFeature = true;
 
 /**
  * this function get called when the window has finished loading the page
  */
 window.onload = function () {
-  id = results.push(...loadFromLocalStorage());
-  results.forEach((res) => {
-    addResultToTable(res);
-  });
+  if (useResultsFeature) {
+    id = results.push(...loadFromLocalStorage());
+    results.forEach((res) => {
+      addResultToTable(res);
+    });
+  }
   update();
 };
 
@@ -21,10 +30,17 @@ window.onload = function () {
  * print state to console for debugging
  */
 function printState() {
-  console.log("firstNumber", firstNumber);
-  console.log("secondNumber", secondNumber);
-  console.log("operation", operation);
-  console.log("result", result);
+  const output = {
+    firstNumber,
+    secondNumber,
+    operation,
+    result,
+  };
+  //   console.log("firstNumber", firstNumber);
+  //   console.log("secondNumber", secondNumber);
+  //   console.log("operation", operation);
+  //   console.log("result", result);
+  console.log(output);
 }
 
 /**
@@ -123,8 +139,10 @@ function calculate() {
       right: secondNumber,
       operation,
     };
-    addResultToTable(resultObject);
-    saveToLocalStorage(resultObject);
+    if (useResultsFeature) {
+      addResultToTable(resultObject);
+      saveToLocalStorage(resultObject);
+    }
   }
   printState();
 }
@@ -148,7 +166,7 @@ function addResultToTable(resultObj) {
 
   const tr = document.createElement("tr");
 
-  const tdId = document.createElement("td");
+  const tdId = document.createElement("th");
   tdId.innerHTML = id;
 
   const tdLeft = document.createElement("td");
@@ -214,12 +232,23 @@ function clearLocalStorage() {
   clearTableContents();
 }
 
+// * FEATURE: add backspace button for fixing mistakes
+// * ...
+
+// * FEATURE: chain calculations by clicking an operation button instead of using '='
+// * ...
+
+// * FEATURE: Add support for floating point calculations
+// * ...
+
+// * FEATURE: Remove latest result
 function deleteLastResult() {
   // remove from app state
   // remove from table
-  // remove form localstorage
+  // remove from localstorage
 }
 
+// * FEATURE: save/load results in a server
 async function loadFromServer() {}
 async function saveToServer(resultObj) {}
 async function deleteFromServer(id) {}
